@@ -1,0 +1,39 @@
+//	  rVal=imgData.data[i];
+//	  gVal=imgData.data[i+1];
+//	  bVal=imgData.data[i+2];
+//	  console.log(rVal);
+//	  console.log(gVal);
+//	  console.log(bVal);
+	  //imgData.data[i+3]=255;
+	  //convert
+	  	var min, max, delta;
+	  	var hVal, sVal, vVal;
+	  	min   = Math.min( rVal, gVal, bVal );
+	  	max   = Math.max( rVal, gVal, bVal );
+	  	vVal  = max;				// v
+	  	delta = max - min;
+	  	if( max != 0 )
+	  		sVal = delta / max;		// s
+	  	else {
+	  		// r = g = b = 0		// s = 0, v is undefined
+	  		sVal = 0;
+	  		hVal = -1;
+	  		var retVal = '"sat":' + Math.ceil(sVal) + ', "bri": ' + Math.ceil(vVal) + ', "hue":' + Math.ceil(hVal);
+	  		console.log(retVal);
+		  	return '"sat":' + sVal + ', "bri": ' + vVal + ', "hue":' + hVal;   
+	  	}
+	  	if( rVal == max )
+	  		hVal = ( gVal - bVal ) / delta;		// between yellow & magenta
+	  	else if( gVal == max )
+	  		hVal = 2 + ( bVal - rVal ) / delta;	// between cyan & yellow
+	  	else
+	  		hVal = 4 + ( rVal - gVal ) / delta;	// between magenta & cyan
+	  	hVal *= 60;				// degrees
+	  	if( hVal < 0 )
+	  		hVal += 360;
+
+  		var retVal = '"sat":' + Math.ceil(sVal) + ', "bri": ' + Math.ceil(vVal) + ', "hue":' + Math.ceil(hVal);
+  		console.log(retVal);
+	  	return retVal;   
+	  //break;	
+	//}
