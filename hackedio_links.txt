@@ -1,0 +1,4 @@
+http://developers.meethue.com/1_lightsapi.html
+https://www.hackerleague.org/hackathons/hacked/hacks
+https://twitter.com/hackedio
+http://developers.meethue.com/4_configurationapi.html

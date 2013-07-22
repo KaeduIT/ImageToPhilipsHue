@@ -3,9 +3,11 @@
 function changeColor() {
 
 	//create variables to store the IP address of the bridge, username and the light id that will be changed
-	var bridgeIpAddress = "192.168.1.144";
-	var username = "KaeduITUser";
-	var lightid = 3;
+	var username		= document.getElementById("addusername").value;
+	if ( username.length < 10 || username.length > 40 )
+		alert('please enter a username between 10 and 40 characters long');
+	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+	var lightid = 1;
 
 	//build a variable for the API URL
 	var apiUrl = "http://" + bridgeIpAddress + "/api";
@@ -21,21 +23,21 @@ function changeColor() {
 	//var data = '{"on":true, "effect":"colorloop"}';
 
 	//Send a PUT request to the specified URL, sending the data object in the request
-	xmlhttp.onload = function(e)  { 
-	
-		//alert('done'); 
-	  	  var respDiv = document.getElementById("resp");
-	
+	xmlhttp.onload = function(e)  {
+
+		//alert('done');
+	  	  var respDiv = document.getElementById("changecolorresp");
+
 		//check HTTP status of the response
 		if (xmlhttp.status == 200) {
 		  //a successful response - though this doesn't mean the device was successful executing the command
-	
+
 		  //cast the respponse to a JavaScript object, this code will work in Firefox but browsers will vary
 		  var response = JSON.parse(xmlhttp.response);
-	  	  console.log(response);	  
+//	  	  console.log(response);
 	          respDiv.innerHTML = "changing Color";
-	
-	
+
+
 		  if(response[0].success) {
 		    respDiv.innerHTML = "changed Color";
 		    respDiv.innerHTML += xmlhttp.response;
@@ -49,12 +51,12 @@ function changeColor() {
 		  respDiv.innerHTML = "Error " + xmlhttp.status + " during request: " + xmlhttp.statusText;
 		  respDiv.innerHTML += xmlhttp.response;
 		}
-	
+
 	}
-	
+
 	xmlhttp.open("PUT", commandUrl, true);
 	xmlhttp.setRequestHeader("Content-Type", "text/plain");
 	xmlhttp.send(data);
 
 
-}	
+}

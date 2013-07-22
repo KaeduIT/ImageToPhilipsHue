@@ -1,81 +1,171 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
 
-		<title>Philips Hue</title>
-		<script src="js/adduser.js" type="text/javascript"></script>
-		<script src="js/getconfig.js" type="text/javascript"></script>
-		<script src="js/getalllights.js" type="text/javascript"></script>
-		<script src="js/changecolour.js" type="text/javascript"></script>
-		<script src="js/changeallcolours.js" type="text/javascript"></script>
-		<script src="js/philipshue.js" type="text/javascript"></script>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-		<link href="style/main.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+	<title>Image to Philips Hue Hacked Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Image to Philips Hue Hacked Project">
+    <meta name="author" content="KaeduIT">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-	<div id="pagecontainer">
+	<!-- Subhead
+	================================================== -->
+	<header class="jumbotron subhead" id="overview">
+	  <div class="container">
+		<h1>Image To Philips Hue</h1>
+		<p class="lead">The end goal of this project is to send an image to the Philips Hue lighting system, before this can be done the lighting system must be configured.</p>
+	  </div>
+	</header>
 
-		<div class="menu"></div>
-			<ul>
-				<li><a class="btn" href="#" onclick="addUser();" title="addUser">addUser</a></li>
-				<li><a class="btn" href="#" onclick="getConfig();" title="getConfig">getConfig</a></li>
-				<li><a class="btn" href="#" onclick="getAllLights();" title="getAllLights">getAllLights</a></li>
-				<li><a class="btn" href="#" onclick="changeColor();" title="changeColor">changeColor</a></li>
-				<li><a class="btn" href="#" onclick="changeAllColors();" title="changeAllColors">changeAllColors</a></li>
-				<li><a class="btn" href="#" onclick="go();" title="go">go</a></li>
-				<li><a class="btn" href="#" onclick="button2();" title="button2">button2</a></li>
-			</ul>
+  	<div class="container">
+
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+      	<ul class="nav nav-list bs-docs-sidenav">
+				<li><a href="#configbridge" title="Enter the bridge IP address"><i class="icon-chevron-right"></i>Configure the Bridge</a></li>
+				<li><a href="#adduser" title="Adds a user to the system"><i class="icon-chevron-right"></i>Add User</a></li>
+				<li><a href="#getconfig" title="Get the details of the existing configuration"><i class="icon-chevron-right"></i>Get Config</a></li>
+				<li><a href="#getalllights" title="Get the details of all the available lights"><i class="icon-chevron-right"></i>Get All Lights</a></li>
+				<li><a href="#changecolor" title="Send green color change to one test light"><i class="icon-chevron-right"></i>Change Color</a></li>
+				<li><a href="#changeallcolors" title="Send blue to three test lights"><i class="icon-chevron-right"></i>Change All Colors</a></li>
+				<li><a href="#go" title="go"><i class="icon-chevron-right"></i>Send Image</a></li>
+		</ul>
+      </div>
+
+      <div class="span9">
+
+        <!-- Bridge
+        ================================================== -->
+        <section id="configbridge">
+          <div class="page-header">
+            <h1>1. Configure the Bridge</h1>
+          </div>
+          <p class="lead">Configure the bridge before changing the lighting. The default value for the bridge IP address is <input id="bridgeIpAddress" type="text" value="192.168.1.144" /> change to the IP address of your bridge before moving to the next step (source <a href="http://developers.meethue.com/4_configurationapi.html">Developers MeetHue - Configuration</a>). </p>
+        </section>
+
+        <!-- addUser
+        ================================================== -->
+        <section id="adduser">
+          <div class="page-header">
+            <h1>2. Add User</h1>
+          </div>
+          <p class="lead">Configure the bridge before changing the lighting. This function adds the <input id="addusername" type="text" value="KaeduITUser" /> user to the bridge. Configure with a new username. (source <a href="http://developers.meethue.com/4_configurationapi.html">Developers MeetHue - Configuration</a>). <a class="btn " href="#" onclick="addUser();" title="Add a new user">Add a new user</a> <div id="adduserresp">.</div></p>
+        </section>
+
+        <!-- getConfig
+        ================================================== -->
+        <section id="getconfig">
+          <div class="page-header">
+            <h1>3. Get Config</h1>
+          </div>
+          <p class="lead">Get the configuration details for the connected bridge. (source <a href="http://developers.meethue.com/4_configurationapi.html">Developers MeetHue - Configuration</a>). <a class="btn " href="#" onclick="getConfig();" title="Get the details of the existing configuration">Get Config</a> <div id="getconfigresp">.</div> </p>
+        </section>
+
+        <!-- getAllLights
+        ================================================== -->
+        <section id="getalllights">
+          <div class="page-header">
+            <h1>4. Get All Lights</h1>
+          </div>
+          <p class="lead">Get the lighting information for this user on the connected bridge. (source <a href="http://developers.meethue.com/1_lightsapi.html">Developers MeetHue - Lights</a>). <a class="btn " href="#" onclick="getAllLights();" title="Get the details of all the available lights">Get All Lights</a> <div id="getalllightsresp">.</div> </p>
+        </section>
+
+        <!-- changeColor
+        ================================================== -->
+        <section id="changecolor">
+          <div class="page-header">
+            <h1>5. Change Color</h1>
+          </div>
+          <p class="lead">Send green color change to one test light. (source <a href="http://developers.meethue.com/1_lightsapi.html">Developers MeetHue - Lights</a>). <a class="btn " href="#" onclick="changeColor();" title="Send green color change to one test light">Change Color</a> <div id="changecolorresp">.</div></p>
+        </section>
+
+        <!-- changeAllColors
+        ================================================== -->
+        <section id="changeallcolors">
+          <div class="page-header">
+            <h1>6. Change All Colors</h1>
+          </div>
+          <p class="lead">Send blue color change to all detected lights. (source <a href="http://developers.meethue.com/1_lightsapi.html">Developers MeetHue - Lights</a>). <a class="btn " href="#" onclick="changeAllColors();" title="Send blue color change to all detected lights">Change All Colors</a> <div id="changeallcolorsresp">.</div></p>
+        </section>
+
+        <!-- go
+        ================================================== -->
+        <section id="go">
+          <div class="page-header">
+            <h1>7. Send Image</h1>
+          </div>
+          <p class="lead">Send the selected image to the bridge. (source <a href="http://developers.meethue.com/1_lightsapi.html">Developers MeetHue - Lights</a>). <a class="btn " href="#" onclick="go();" title="Send image to the available lights">Send Image</a> <div id="sendimageresp">.</div></p>
+		  <div><img id="origin" src="style/images/test4.jpg" /></div>
+		  <div><canvas id="fini" width="16" height="16" style="border:1px solid #d3d3d3;"></canvas></div>
+        </section>
+
+      </div>
+    </div>
+  <div id="resp">.</div>
+  <input id="lightcount" type="hidden" />
+  </div>
 
 
-			<div id="resp">req-resp</div>
+  <script src="js/adduser.js" type="text/javascript"></script>
+  <script src="js/getconfig.js" type="text/javascript"></script>
+  <script src="js/getalllights.js" type="text/javascript"></script>
+  <script src="js/changecolour.js" type="text/javascript"></script>
+  <script src="js/changeallcolours.js" type="text/javascript"></script>
+  <script src="js/philipshue.js" type="text/javascript"></script>
+  <script src="js/go.js" type="text/javascript"></script>
+
+ <footer class="footer"><div class="container">
+	  <p class="copyright">&copy; Copyright 2013 - <a href="/">KaeduIT</a> - All Rights Reserved </p>
+ </div></footer>
 
 
-			<div><img id="origin" src="style/images/test3.jpg" /></div>
-			<div><canvas id="fini" width="61" height="4" style="border:1px solid #d3d3d3;"></canvas></div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap-transition.js"></script>
+<script src="assets/js/bootstrap-alert.js"></script>
+<script src="assets/js/bootstrap-modal.js"></script>
+<script src="assets/js/bootstrap-dropdown.js"></script>
+<script src="assets/js/bootstrap-scrollspy.js"></script>
+<script src="assets/js/bootstrap-tab.js"></script>
+<script src="assets/js/bootstrap-tooltip.js"></script>
+<script src="assets/js/bootstrap-popover.js"></script>
+<script src="assets/js/bootstrap-button.js"></script>
+<script src="assets/js/bootstrap-collapse.js"></script>
+<script src="assets/js/bootstrap-carousel.js"></script>
+<script src="assets/js/bootstrap-typeahead.js"></script>
+<script src="assets/js/bootstrap-affix.js"></script>
 
+<script src="assets/js/holder/holder.js"></script>
+<script src="assets/js/google-code-prettify/prettify.js"></script>
 
-
-		</div>
-
-		<div id="footer" class="footer">
-			  <p class="copyright">© Copyright 2013 - <a href="/">KaeduIT</a> - All Rights Reserved </p>
-		</div>
-
-
-
-<script>
-document.getElementById("origin").onload=function(){
-  var c=document.getElementById("fini");
-  var ctx=c.getContext("2d");
-  var img=document.getElementById("origin");
-  ctx.drawImage(img,0,0);
-  var imgData=ctx.getImageData(0,0,c.width,c.height);
-  // invert colors
-  for (var i=0;i<imgData.data.length;i+=4)
-    {
-    imgData.data[i]=255-imgData.data[i];
-    imgData.data[i+1]=255-imgData.data[i+1];
-    imgData.data[i+2]=255-imgData.data[i+2];
-    imgData.data[i+3]=255;
-
-    //console.log(imgData.data[i]);
-    //console.log(imgData.data[i+1]);
-    //console.log(imgData.data[i+2]);
-    //console.log(imgData.data[i+3]);
-
-
-    }
-  ctx.putImageData(imgData,0,0);
-};
-</script>
-<script src="js/go.js" type="text/javascript"></script>
+<script src="assets/js/application.js"></script>
 
 
 
 </body>
-
 </html>
