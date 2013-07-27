@@ -8,30 +8,30 @@ var intervalID, fourDayIntervalID;
 
 var IconToHue =
 {
-	mostlysunny: 	'{"on":true, "sat":110, "bri":110, "hue":10000,  "effect":"none",  "transitiontime":2}',
-	partlysunny: 	'{"on":true, "sat":110, "bri":110, "hue":14000,  "effect":"none",  "transitiontime":2}',
-	sunny:	 		'{"on":true, "sat":255, "bri":255, "hue":0,      "effect":"none",  "transitiontime":2}',
-	chanceflurries: '{"on":true, "sat":25,  "bri":10,  "hue":46920,  "effect":"none",  "transitiontime":2}',
-	flurries: 		'{"on":true, "sat":25,  "bri":110, "hue":46920,  "effect":"none",  "transitiontime":2}',
-	chancetstorms:  '{"on":true, "sat":200, "bri":110, "hue":46920,  "effect":"none",  "transitiontime":2}',
-	tstorms: 		'{"on":true, "sat":200, "bri":255, "hue":46920,  "effect":"none",  "transitiontime":2}',
-	mostlycloudy: 	'{"on":true, "sat":0,   "bri":190, "hue":0,      "effect":"none",  "transitiontime":2}',
-	partlycloudy: 	'{"on":true, "sat":0,   "bri":120, "hue":0,      "effect":"none",  "transitiontime":2}',
-	cloudy: 		'{"on":true, "sat":0,   "bri":90,  "hue":0,      "effect":"none",  "transitiontime":2}',
-	chancesnow: 	'{"on":true, "sat":200, "bri":10,  "hue":45500,  "effect":"none",  "transitiontime":2}',
-	snow: 			'{"on":true, "sat":200, "bri":100, "hue":45500,  "effect":"none",  "transitiontime":2}',
-	chancesleet: 	'{"on":true, "sat":100, "bri":50,  "hue":50000,  "effect":"none",  "transitiontime":2}',
-	sleet: 			'{"on":true, "sat":255, "bri":50,  "hue":50000,  "effect":"none",  "transitiontime":2}',
-	chancerain: 	'{"on":true, "sat":100, "bri":110, "hue":46920,  "effect":"none",  "transitiontime":2}',
-	rain: 			'{"on":true, "sat":255, "bri":110, "hue":46920,  "effect":"none",  "transitiontime":2}',
-	clear: 			'{"on":true, "sat":0,   "bri":0,   "hue":0,      "effect":"none",  "transitiontime":2}',
-	fog: 			'{"on":true, "sat":255, "bri":192, "hue":0,      "effect":"none",  "transitiontime":2}',
-	hazy: 			'{"on":true, "sat":255, "bri":90,  "hue":0,      "effect":"none",  "transitiontime":2}'
+	mostlysunny: 	'{"on":true, "sat":110, "bri":110,  "hue":10000,  "effect":"none",  "transitiontime":2}',
+	partlysunny: 	'{"on":true, "sat":110, "bri":110,  "hue":14000,  "effect":"none",  "transitiontime":2}',
+	sunny:	 		'{"on":true, "sat":255, "bri":255,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	chancerain: 	'{"on":true, "sat":100, "bri":110,  "hue":46920,  "effect":"none",  "transitiontime":2}',
+	rain: 			'{"on":true, "sat":255, "bri":110,  "hue":46920,  "effect":"none",  "transitiontime":2}',
+	clear: 			'{"on":true, "sat":0,   "bri":255,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	fog: 			'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	hazy: 			'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	chanceflurries: '{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	flurries: 		'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	chancetstorms:  '{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	tstorms: 		'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	mostlycloudy: 	'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	partlycloudy: 	'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	cloudy: 		'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	chancesnow: 	'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	snow: 			'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	chancesleet: 	'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}',
+	sleet: 			'{"on":true, "sat":0,   "bri":120,  "hue":0,      "effect":"none",  "transitiontime":2}'
 };
 
 function initialize() {
 	geocoder = new google.maps.Geocoder();
-	var mapOptions = {zoom: 8,center: new google.maps.LatLng(-34.397, 150.644),mapTypeId: google.maps.MapTypeId.ROADMAP}
+	var mapOptions = {zoom: 12,center: new google.maps.LatLng(-34.397, 150.644),mapTypeId: google.maps.MapTypeId.ROADMAP}
   	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   	codeAddress();
 }
