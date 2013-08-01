@@ -1,10 +1,25 @@
 function getConfig() {
 
 	var addusername		= document.getElementById("addusername").value;
+<<<<<<< HEAD
 	if ( addusername.length < 10 || addusername.length > 40 )
 		alert('please enter a username between 10 and 40 characters long');
 
 	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+=======
+	if ( addusername.length < 10 || addusername.length > 40 ) {
+		alert('please enter a username between 10 and 40 characters long');
+		return false;
+	}
+
+	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+	if ( bridgeIpAddress.length > 15 ) {
+		alert('please enter an IP address, 15 characters long');
+		return false;
+	}
+
+	//build a variable for the API URL
+>>>>>>> quotient, domain, weather
 	var apiUrl 			= "http://" + bridgeIpAddress + "/api/" + addusername + "/config";
 
 	//create a new XML Http Request object for performing an AJAX call.

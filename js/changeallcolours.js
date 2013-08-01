@@ -2,6 +2,7 @@
 
 function changeAllColors() {
 
+<<<<<<< HEAD
 	if(document.getElementById("lightcount").value != '')
 		alert('Please click on the \'Get All Lights button\' to detect the connected lights.');
 
@@ -14,9 +15,34 @@ function changeAllColors() {
 		if ( username.length < 10 || username.length > 40 )
 			alert('please enter a username between 10 and 40 characters long');
 		var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+=======
+	if(document.getElementById("lightcount").value == '') {
+		alert('Please click on the \'Get All Lights button\' to detect the connected lights.');
+		return false;
+	}
 
-		//build a variable for the API URL
-		var apiUrl = "http://" + bridgeIpAddress + "/api";
+	var lightcount = document.getElementById("lightcount").value != '' ? document.getElementById("lightcount").value : 3;
+
+	//create variables to store the IP address of the bridge, username and the light id that will be changed
+	var username		= document.getElementById("addusername").value;
+	if ( username.length < 10 || username.length > 40 ) {
+		alert('please enter a username between 10 and 40 characters long');
+		return false;
+	}
+
+	// make sure this is entered
+	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+	if ( bridgeIpAddress.length > 15 ) {
+		alert('please enter an IP address, 15 characters long');
+		return false;
+	}
+
+	//build a variable for the API URL
+	var apiUrl = "http://" + bridgeIpAddress + "/api";
+
+	for(var lightid = 1; lightid <=lightcount; lightid++) {
+>>>>>>> quotient, domain, weather
+
 		//create a new XML Http Request object for performing an AJAX call.
 		var xmlhttp=new XMLHttpRequest();
 

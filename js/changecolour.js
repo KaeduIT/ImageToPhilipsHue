@@ -4,17 +4,32 @@ function changeColor() {
 
 	//create variables to store the IP address of the bridge, username and the light id that will be changed
 	var username		= document.getElementById("addusername").value;
+<<<<<<< HEAD
 	if ( username.length < 10 || username.length > 40 )
 		alert('please enter a username between 10 and 40 characters long');
 	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
 	var lightid = 1;
+=======
+	if ( username.length < 10 || username.length > 40 ) {
+		alert('please enter a username between 10 and 40 characters long');
+		return false;
+	}
+
+	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
+	if ( bridgeIpAddress.length > 15 ) {
+		alert('please enter an IP address, 15 characters long');
+		return false;
+	}
+>>>>>>> quotient, domain, weather
 
 	//build a variable for the API URL
 	var apiUrl = "http://" + bridgeIpAddress + "/api";
+
 	//create a new XML Http Request object for performing an AJAX call.
 	var xmlhttp=new XMLHttpRequest();
 
 	//build the URL require to set the light's state
+	var lightid = 1;
 	var commandUrl= apiUrl + "/" + username + "/lights/" + lightid + "/state";
 	//build a data object for setting the light's state
 	var data = '{"on":true, "sat":120, "bri":110,"hue":25500,"effect":"none","transitiontime":2}';
