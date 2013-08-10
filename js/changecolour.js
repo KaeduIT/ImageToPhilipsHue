@@ -4,12 +4,6 @@ function changeColor() {
 
 	//create variables to store the IP address of the bridge, username and the light id that will be changed
 	var username		= document.getElementById("addusername").value;
-<<<<<<< HEAD
-	if ( username.length < 10 || username.length > 40 )
-		alert('please enter a username between 10 and 40 characters long');
-	var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
-	var lightid = 1;
-=======
 	if ( username.length < 10 || username.length > 40 ) {
 		alert('please enter a username between 10 and 40 characters long');
 		return false;
@@ -20,7 +14,6 @@ function changeColor() {
 		alert('please enter an IP address, 15 characters long');
 		return false;
 	}
->>>>>>> quotient, domain, weather
 
 	//build a variable for the API URL
 	var apiUrl = "http://" + bridgeIpAddress + "/api";

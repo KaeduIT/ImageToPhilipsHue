@@ -5,7 +5,7 @@ var getHSV = function(lightid) {
 
 var quotient = 182.04166666666666666666666666667;
 var img 	 = document.getElementById("imagetosend");
-var canvas   = document.getElementById("progresscopy");
+var canvas 	 = document.getElementById("progresscopy");
 
 canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
 canvas.getContext('2d').drawImage(img,0,0,img.width,img.height);
@@ -14,57 +14,6 @@ var imgData  = canvas.getContext('2d').getImageData(0,0,img.width,img.height);
 
 var retVal  = '"sat":0, "bri":255,"hue":0';
 
-<<<<<<< HEAD
-//console.log('lightid='+lightid);
-lightid -=1;
-lightid *=4;
-
-for (var i=lightid; i<imgData.data.length; i+=4)
-{
-    var rVal=imgData.data[i];
-    var gVal=imgData.data[i+1];
-    var bVal=imgData.data[i+2];
-    var alpha=imgData.data[i+3];
-
-	  	var min, max, delta;
-	  	var hVal, sVal, vVal;
-	  	min   = Math.min( rVal, gVal, bVal );
-	  	max   = Math.max( rVal, gVal, bVal );
-	  	vVal  = max;				// v
-	  	delta = max - min;
-	  	if( max != 0 )
-	  		sVal = delta / max;		// s
-	  	else {
-	  		// r = g = b = 0		// s = 0, v is undefined
-	  		sVal = 0;
-	  		hVal = 0
-
-	  		hVal *= alpha;			// for the hue value range
-	  		sVal = 255;
-	  		retVal = '"sat":' + Math.ceil(sVal) + ', "bri": ' + Math.ceil(vVal) + ', "hue":' + Math.ceil(hVal);
-	  		//console.log(retVal);
-		  	//return '"sat":' + sVal + ', "bri": ' + vVal + ', "hue":' + hVal;
-		  	break;
-	  	}
-	  	if( rVal == max )
-	  		hVal = ( gVal - bVal ) / delta;
-	  	else if( gVal == max )
-	  		hVal = 2 + ( bVal - rVal ) / delta;
-	  	else
-	  		hVal = 4 + ( rVal - gVal ) / delta;
-	  	hVal *= alpha;				// for the hue value range
-	  	if( hVal < 0 )
-	  		hVal += 360;
-
-		sVal = 255;
-  		retVal = '"sat":' + Math.ceil(sVal) + ', "bri": ' + Math.ceil(vVal) + ', "hue":' + Math.ceil(hVal);
-  		//console.log(retVal);
-	  	//return retVal;
-		break;
-  }
-ctx.putImageData(imgData,0,0);
-return retVal;
-=======
 lightid -=1;
 lightid *=4;
 
@@ -116,28 +65,11 @@ var r=0, g=0, b=0;
 	//console.log(retVal);
 
 	return retVal;
->>>>>>> quotient, domain, weather
 }
 
 
 function go() {
 
-<<<<<<< HEAD
-	if(document.getElementById("lightcount").value != '')
-		alert('Please click on the \'Get All Lights button\' to detect the connected lights.');
-	var lightcount = document.getElementById("lightcount").value != '' ? document.getElementById("lightcount").value : 3;
-
-
-	for(var lightid = 1; lightid <=lightcount; lightid++) {
-
-		//create variables to store the IP address of the bridge, username and the light id that will be changed
-		var username		= document.getElementById("addusername").value;
-		if ( username.length < 10 || username.length > 40 )
-			alert('please enter a username between 10 and 40 characters long');
-		var bridgeIpAddress = document.getElementById("bridgeIpAddress").value;
-=======
-	//$(".alert").alert();
-	//$(".alert").alert().css({ 'display': 'block' });
 
 /////////////////////////////////////////////////////////////testing for the CORS issue//////////////////////////////////////////////////////////////////////////////////////////////////
 //alert('test');
@@ -170,16 +102,15 @@ function go() {
 	var apiUrl = "http://" + bridgeIpAddress + "/api";
 
 	for(var lightid = 1; lightid <=lightcount; lightid++) {
->>>>>>> quotient, domain, weather
 
+		var data = '{"on":true, ' + getHSV(lightid) + ',"effect":"none","transitiontime":2}';
+//continue;
 		//create a new XML Http Request object for performing an AJAX call.
 		var xmlhttp=new XMLHttpRequest();
 
 		//build the URL require to set the light's state
 		var commandUrl= apiUrl + "/" + username + "/lights/" + lightid + "/state";
 		//build a data object for setting the light's state
-		var data = '{"on":true, ' + getHSV(lightid) + ',"effect":"none","transitiontime":2}';
-//continue;
 		//Alternative values for the light state
 		//var data = '{"on":true, "effect":"colorloop"}';
 
@@ -187,11 +118,7 @@ function go() {
 		xmlhttp.onload = function(e)  {
 
 			//alert('done');
-<<<<<<< HEAD
-			  var respDiv = document.getElementById("sendimageresp");
-=======
 			var respDiv = document.getElementById("sendimageresp");
->>>>>>> quotient, domain, weather
 
 			//check HTTP status of the response
 			if (xmlhttp.status == 200) {
@@ -221,10 +148,7 @@ function go() {
 		xmlhttp.setRequestHeader("Content-Type", "text/plain");
 		xmlhttp.send(data);
 	}
-<<<<<<< HEAD
-=======
 
 	//$(".alert").alert().css({ 'display': 'none' });
 	//$(".alert").alert('close');
->>>>>>> quotient, domain, weather
 }
